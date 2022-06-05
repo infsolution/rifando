@@ -1,0 +1,19 @@
+POST https://vuzjlzswyikppzuebuti.supabase.co/auth/v1/signup
+Content-Type: application/json
+apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1empsenN3eWlrcHB6dWVidXRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTQzNTAxODMsImV4cCI6MTk2OTkyNjE4M30.cC0DBU6TdEf8ahYGG1N6uJHx1-45TLQbRrAv-fgVVf8
+
+{
+    "email": "ciceroleonardodasilva@gmail.com",
+    "password": "marcelia23"  
+}
+
+###
+
+POST https://vuzjlzswyikppzuebuti.supabase.co/auth/v1/token?grant_type=password
+Content-Type: application/json
+apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1empsenN3eWlrcHB6dWVidXRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTQzNTAxODMsImV4cCI6MTk2OTkyNjE4M30.cC0DBU6TdEf8ahYGG1N6uJHx1-45TLQbRrAv-fgVVf8
+
+{
+    "email": "ciceroleonardodasilva@gmail.com",
+    "password": "marcelia23"  
+}
