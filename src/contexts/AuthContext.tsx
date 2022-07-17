@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { createContext } from "react";
 import {AuthContextType, User} from  '../types/types'
 import {Props} from '../interfaces/Interfaces'
-import { parseCookies, setCookie } from 'nookies'
+import { parseCookies, setCookie, destroyCookie } from 'nookies'
 import supabase from "../pages/api/supabase";
 import { useRouter } from 'next/router'
 
@@ -10,7 +10,7 @@ export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthProvider({children}: Props){
     const token = '';
-    const [user, setUser] = useState<User>({
+    const [user, setUser] = useState<User| null>({
         name:'',
         email:'',
         avatar_url:''
@@ -35,7 +35,18 @@ export function AuthProvider({children}: Props){
             setCookie(undefined, 'rfd-token ', session.access_token,{maxAge: 3600})
         }
        
-        router.push('/')
+        router.push('/dashboard')
+    }
+
+    async function logout(){
+        try {
+            let { error } = await supabase.auth.signOut()
+            destroyCookie(null, 'rfd-token')
+            setUser(null);
+            router.push('/login')
+        } catch (error) {
+            console.log(error)
+        }
     }
    
 
@@ -43,7 +54,7 @@ export function AuthProvider({children}: Props){
         const {'rfd-token': token} = parseCookies()
     },[])
     return(
-        <AuthContext.Provider value={{user, isAuthenticated, signIn}}>
+        <AuthContext.Provider value={{user, isAuthenticated, signIn, logout}}>
             {children}
         </AuthContext.Provider>
     )

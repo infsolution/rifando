@@ -1,9 +1,18 @@
+import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { parseCookies } from 'nookies'
 import styles from '../styles/Home.module.css'
-
+import { useRouter } from 'next/router'
 const Home: NextPage = () => {
+  const router = useRouter()
+  React.useEffect(()=>{
+    const {'rfd-token': token} = parseCookies()
+    if(token){
+      router.push('/dashboard')
+    }
+  },[])
   return (
     <div className={styles.container}>
       <Head>

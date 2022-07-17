@@ -9,8 +9,13 @@ export type SignInData={
 } 
 export type AuthContextType={
     isAuthenticated: boolean;
-    user: User;
+    user: User|null;
     signIn:(data: {[x:string]:any})=>Promise<void>
+    logout:()=>Promise<void>
+}
+
+export type UserData={
+    email:string
 }
 
 
