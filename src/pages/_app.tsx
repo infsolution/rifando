@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import type { AppProps } from 'next/app'
 import { AuthProvider } from '../contexts/AuthContext'
@@ -6,6 +7,9 @@ import '../styles/globals.css'
 import Navbar from "../components/Navbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    typeof document !== undefined ? require('bootstrap/dist/js/bootstrap') : null
+}, [])
   return (
     <>
     <Head>

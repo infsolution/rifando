@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { addDays } from 'date-fns'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useForm } from 'react-hook-form';
 import { SignInData } from '../types/types';
 import { AuthContext } from '../contexts/AuthContext';
@@ -62,7 +63,7 @@ export function FormLogin(){
                     <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
 
                     <div className="text-center">
-                        <p>Not a member? <a href="#!">Register</a></p>
+                        <p>Not a member? <Link href="/signup"><a>Register</a></Link></p>
                         <p>or sign up with:</p>
                         <button type="button" className="btn btn-link btn-floating mx-1">
                         <i className="fab fa-facebook-f"></i>

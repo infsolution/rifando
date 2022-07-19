@@ -3,27 +3,23 @@ import { createContext } from "react";
 import {AuthContextType, User} from  '../types/types'
 import {Props} from '../interfaces/Interfaces'
 import { parseCookies, setCookie, destroyCookie } from 'nookies'
-import supabase from "../pages/api/supabase";
+import supabase from "../connection/supabase";
 import { useRouter } from 'next/router'
 
 export const AuthContext = createContext({} as AuthContextType);
 
 export function AuthProvider({children}: Props){
     const token = '';
-    const [user, setUser] = useState<User| null>({
-        name:'',
-        email:'',
-        avatar_url:''
-    });
+    const [user, setUser] = useState<User| null>(null);
     const router = useRouter()
     const isAuthenticated = !!user;
 
     async function signIn(data: {[x:string]:any}) {
-            let {session, user, error} =await supabase.auth.signIn({
+            let {session, user, error} = await supabase.auth.signIn({
                 email:data.email,
                 password:data.password
             })
-            console.log(session)
+
         if(user){
             setUser({
                 name:'',

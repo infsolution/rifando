@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env:{
-    APY_KEY: process.env.APY_KEY,
-    BASE_URL: process.env.BASE_URL
+    SUPABASE_KEY: process.env.SUPABASE_KEY,
+    SUPABASE_URL: process.env.SUPABASE_URL
   }
 }
 
