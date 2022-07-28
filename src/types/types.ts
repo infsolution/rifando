@@ -29,14 +29,24 @@ export type UserData={
     email:string
 }
 
-
+export type Point={
+    id?:number,
+    number:number,
+    point_image?:string,
+    raffle_id:number,
+    profile_id?:number,
+    paid_out:boolean,
+    value:number,
+    draw:boolean
+}
 export type Raffle={
-    id?:string;
+    id?:number;
     name:string;
     description?:string;
     draw_date?:string;
     point_value?:number;
     total_points:number;
     total_sold:number
+    points?:Point[]
 }
 
