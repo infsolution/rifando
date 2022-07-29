@@ -1,0 +1,16 @@
+.flexContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flexContainer > div{
+    background-color: #e60f0f;
+    width: 3rem;
+    margin: 0.1rem;
+    text-align: center;
+    align-content: center;
+    height: 3rem;
+    font-size: 1.2rem;
+    border-radius: 50%;
+}
+

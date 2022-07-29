@@ -19,7 +19,6 @@ export function FormRaffle(){
 
 	return (
 		<>
-			<h2>Criar uma Rifa</h2>
 			 <div className='container'>
 			  <form onSubmit = { handleSubmit(handleSingIn) }>
 			 	<div className="form-outline mb-4">
@@ -42,7 +41,7 @@ export function FormRaffle(){
                     <input type="number" id="form2Example1" className="form-control" {...register('price')}/>
                     <label className="form-label" >Quanto custa cada ponto?</label>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block mb-4">Sign in</button>
+                <button type="submit" className="btn btn-primary btn-block mb-4">Criar</button>
               </form>      
 			 </div>
 			 

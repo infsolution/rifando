@@ -29,15 +29,15 @@ export type UserData={
     email:string
 }
 
-export type Point={
+export type TPoint={
     id?:number,
     number:number,
     point_image?:string,
     raffle_id:number,
     profile_id?:number,
-    paid_out:boolean,
+    paid_out?:boolean,
     value:number,
-    draw:boolean
+    draw?:boolean
 }
 export type Raffle={
     id?:number;
@@ -47,6 +47,6 @@ export type Raffle={
     point_value?:number;
     total_points:number;
     total_sold:number
-    points?:Point[]
+    points?:TPoint[]
 }
 

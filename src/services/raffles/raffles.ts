@@ -1,6 +1,6 @@
 import supabase from '../../connection/supabase'
 import {Raffle} from '../../types/types'
-
+import { TPoint } from '../../types/types'
 
 export const createRaffle = async (dataRaffle: {[x:string]:any})=>{
 
@@ -12,13 +12,13 @@ export const createRaffle = async (dataRaffle: {[x:string]:any})=>{
   ])
 		if(error) return error
 		if(data){
-			const totalPoints = []
+			const totalPoints:TPoint[] = []
 			const raffle:Raffle = data[0]
-			for(let i=1; i<= raffle.total_points;i++){
+			for(let i: number=1; i<= raffle.total_points;i++){
 				totalPoints.push({
 					number:i,
-					raffle_id:raffle.id,
-					value:raffle.point_value,
+					raffle_id:raffle.id??0,
+					value:raffle.point_value??0,
 				})
 			}
 			const points = await supabase.from('points').insert(totalPoints)

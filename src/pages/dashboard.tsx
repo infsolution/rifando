@@ -7,20 +7,21 @@ import { UserData, Raffle } from '../types/types'
 import withAuth from '../wrapper/withAuth'
 import {FormRaffle} from '../components/FormRaffle'
 import {TableRaffles} from '../components/TableRaffles'
+import RModal from '../components/default/RModal'
 import { parseCookies } from 'nookies'
 import { getAll } from '../services/raffles/raffles'
+import { Button } from 'reactstrap';
 
 function Dashboard (raffles:Raffle[]){
-
+    
     return(
         <>
         <Head>
             <title>Dashboard</title>
         </Head>
         <div className='container' >
-            <FormRaffle />
+            <RModal args={[{title:"Criar uma Rifa"}]}><FormRaffle /></RModal>
             <TableRaffles raffles={raffles}/>
-
         </div>
         
         

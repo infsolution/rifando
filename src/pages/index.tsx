@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { parseCookies } from 'nookies'
 import styles from '../styles/Home.module.css'
 import { useRouter } from 'next/router'
+import { Button } from 'reactstrap';
 const Home: NextPage = () => {
   const router = useRouter()
   React.useEffect(()=>{
