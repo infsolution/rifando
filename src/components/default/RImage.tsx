@@ -9,7 +9,7 @@ export function RImage(props){
           title={props.title?props.title:'Imagem da Rifa'}
           width={props.width}
           height={props.height}
-          className={"img-fluid"}
+          className={`img-fluid ${styles.imgBadge}`}
         />
       )
 }
