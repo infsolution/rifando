@@ -16,5 +16,12 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+    cursor: pointer;
 }
 
+.footerNumber{
+    border: 1px  solid #3d67ee;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: #3d67ee;
+}

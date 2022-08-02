@@ -47,7 +47,7 @@ const  RNavbar: NextPage =(args)=>{
                  <DropdownToggle nav caret>
                    Options
                  </DropdownToggle>
-                 <DropdownMenu right>
+                 <DropdownMenu>
                    <DropdownItem>
                      Option 1
                    </DropdownItem>

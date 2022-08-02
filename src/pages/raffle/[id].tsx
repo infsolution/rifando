@@ -6,10 +6,21 @@ import { setHeder } from '../../connection/api'
 import { Points } from '../../components/Points'
 import {RImage} from '../../components/default/RImage'
 import { RCarousel } from '../../components/default/RCarousel'
-import { UncontrolledCarousel } from 'reactstrap'
+import { UncontrolledCarousel, Button, CloseButton } from 'reactstrap'
+import { updatePoint } from '../../services/points/Ponit'
+
 import styles from '../../styles/Raffle.module.css'
 function Raffles({data}){
+  const [showPoints, setShowPoints] = React.useState(false)
+  const [numbers, setNumbers] = React.useState<number[]>([])
+  function showHidenPoints(number:number){
+    setNumbers([...numbers, number])
+    setShowPoints(true)
+  }
 
+  function buyPoints(){
+    updatePoint(numbers, 1, data.id)
+  }
     return(
         <>
         <Head>
@@ -21,19 +32,19 @@ function Raffles({data}){
     {
       altText: 'Slide 1',
       caption: 'Slide 1',
-      key: '1',
+      key: 1,
       src: 'https://picsum.photos/id/123/1200/600'
     },
     {
       altText: 'Slide 2',
       caption: 'Slide 2',
-      key: '2',
+      key: 2,
       src: 'https://picsum.photos/id/456/1200/600'
     },
     {
       altText: 'Slide 3',
       caption: 'Slide 3',
-      key: '3',
+      key: 3,
       src: 'https://picsum.photos/id/678/1200/600'
     }
   ]}
@@ -41,9 +52,21 @@ function Raffles({data}){
          <p>{data.name}</p>
         <p>{data.description}</p>
         
-          {data.points && <div className={styles.flexContainer}><Points points={data.points}/></div>}
+          {data.points && <div className={styles.flexContainer}><Points points={data.points} setShowPoints={showHidenPoints}/></div>}
             
-        
+        { showPoints &&<div className={styles.footerNumber}>
+          {
+            numbers.length>0 && numbers.map(num=>{
+              return (
+                <div key={num}>
+                  {num}
+                </div>
+              )
+            })
+          }
+          <CloseButton variant="white" onClick={()=>setShowPoints(false)}/>
+          <Button color="success" onClick={buyPoints}>COMPRAR PONTOS</Button>
+        </div>}
         </div>
         }
         </>
@@ -73,7 +96,8 @@ export  const getServerSideProps: GetServerSideProps = async ( {req, params} ) =
 
     return{
         props:{
-            data:data
+            data:data,
+
         }
     }
 }
