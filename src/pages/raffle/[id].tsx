@@ -6,13 +6,14 @@ import { setHeder } from '../../connection/api'
 import { Points } from '../../components/Points'
 import {RImage} from '../../components/default/RImage'
 import { RCarousel } from '../../components/default/RCarousel'
-import { UncontrolledCarousel, Button, CloseButton } from 'reactstrap'
+import { UncontrolledCarousel, Button, CloseButton, ButtonGroup } from 'reactstrap'
 import { updatePoint } from '../../services/points/Ponit'
 
 import styles from '../../styles/Raffle.module.css'
 function Raffles({data}){
   const [showPoints, setShowPoints] = React.useState(false)
   const [numbers, setNumbers] = React.useState<number[]>([])
+  
   function showHidenPoints(number:number){
     setNumbers([...numbers, number])
     setShowPoints(true)
@@ -20,6 +21,17 @@ function Raffles({data}){
 
   function buyPoints(){
     updatePoint(numbers, 1, data.id)
+  }
+
+  function removeItem(num: number){
+    const idx = numbers.indexOf(num)
+    if(idx !== -1){
+      numbers.splice(idx, 1)
+    }
+    setNumbers([...numbers])
+    if(numbers.length===0){
+      setShowPoints(false)
+    }
   }
     return(
         <>
@@ -54,18 +66,21 @@ function Raffles({data}){
         
           {data.points && <div className={styles.flexContainer}><Points points={data.points} setShowPoints={showHidenPoints}/></div>}
             
-        { showPoints &&<div className={styles.footerNumber}>
+        { showPoints && <div className={styles.footerNumber}>
+          <div>Comprar os pontos:</div>
           {
             numbers.length>0 && numbers.map(num=>{
               return (
-                <div key={num}>
+                <div key={num} className={styles.points} onClick={()=>removeItem(num)} title={`Remover ${num}`}>
                   {num}
                 </div>
               )
             })
           }
-          <CloseButton variant="white" onClick={()=>setShowPoints(false)}/>
-          <Button color="success" onClick={buyPoints}>COMPRAR PONTOS</Button>
+          <div >
+          <Button color="success" onClick={buyPoints} className={styles.btnBuyPoint}>COMPRAR</Button>
+          <CloseButton variant="white" onClick={()=>setShowPoints(false)} className={styles.btnClose}/>
+        </div>
         </div>}
         </div>
         }

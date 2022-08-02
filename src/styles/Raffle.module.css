@@ -6,7 +6,6 @@
 }
 
 .flexContainer > div{
-    background-color: #26e646;
     width: 3rem;
     margin: 0.1rem;
     display: flex;
@@ -16,12 +15,41 @@
     align-items: center;
     justify-content: center;
     padding: 0;
-    cursor: pointer;
+
 }
 
 .footerNumber{
     border: 1px  solid #3d67ee;
     margin-top: 2rem;
-    margin-bottom: 2rem;
     background: #3d67ee;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 8rem;
+    display: flex;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+}
+
+.points{
+    background-color: #e5eee7;
+    width: 3rem;
+    margin: 0.1rem;
+    display: flex;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 10%;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btnBuyPoint{
+    margin-left: 3rem;
+}
+.btnClose{
+    position: absolute;
 }

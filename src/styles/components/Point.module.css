@@ -1,0 +1,7 @@
+.pointAvailable{
+    background-color: #26e646;
+    cursor: pointer;
+}
+.pointUnavailable{
+    background-color: #dd3636;
+}
